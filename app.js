@@ -1,14 +1,17 @@
 const express = require("express");
+const { builtinModules } = require("module");
 const nunjucks = require("nunjucks");
+const skeletonRoutes = require("./routes/skeletonRoutes")
 
 const app = express();
-
-app.use('/static', express.static('static'))
 
 nunjucks.configure("templates", {
     autoescape: true,
     express: app
 });
+
+app.use('/static', express.static('static'))
+app.use("/skeleton", skeletonRoutes);
 
 app.get("/", function(req, res, next) {
     return res.render("index.html");
