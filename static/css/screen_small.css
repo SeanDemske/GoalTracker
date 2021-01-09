@@ -1,0 +1,31 @@
+
+/* Landing Page */
+.landing-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#splashscreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#splashscreen h1 {
+    font-size: 4rem;
+}
+
+#signin-signout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#signin-signout button {
+    font-size: 3rem;
+}
+
