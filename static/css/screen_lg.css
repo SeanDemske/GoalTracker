@@ -1,0 +1,12 @@
+
+/* Landing Page */
+#signin-signout {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#signin-signout button {
+    margin: 0 15px;
+}

@@ -56,7 +56,8 @@ h1 {
     color: var(--unselected-color);
 }
 
-.btn-hyperlink:hover {
+.btn-hyperlink:hover,
+.btn-hyperlink:focus {
     text-decoration: underline;
     color: var(--light-color);
     cursor: pointer;
