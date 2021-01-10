@@ -8,4 +8,8 @@ router.get("/", function(req, res, next) {
     return res.render("index.html");
 });
 
+router.get("/:username/:goal_id", function(req, res, next) {
+    return res.render("goal_detail.html");
+});
+
 module.exports = router;
