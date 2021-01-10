@@ -8,6 +8,8 @@
     --dark-color: #333;
     --unselected-color: #D4C9C9;
     --text-info: #dbc794;
+
+    --primary-button-color: #484675;
     
     --faded-text: #b9b9b9de;
 
@@ -45,6 +47,10 @@ body {
     background: linear-gradient(180deg, rgba(53,53,60,1) 0%, rgba(72,70,117,1) 23%, rgba(84,82,127,1) 78%, rgba(117,106,163,1) 100%);
 }
 
+#signup-signin-page {
+    background: var(--light-color);
+}
+
 h1 {
     font-family: 'Raleway', sans-serif;
 }
@@ -59,6 +65,8 @@ ul {
 .text-light { color: var(--light-color) }
 .text-faded { color: var(--faded-text) }
 .text-info { color: var(--text-info) }
+
+.text-underline { text-decoration: underline; }
 
 
 /* ********************************* */
@@ -83,4 +91,85 @@ ul {
     text-decoration: underline;
     color: var(--light-color);
     cursor: pointer;
+}
+
+/* Button Base */
+.btn {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    background-color: var(--primary-button-color);
+    border: none;
+    color: var(--light-color);
+    padding: 1rem 1rem;
+    border-radius: 10px;
+    margin: .5rem 0;
+}
+
+.btn-primary {
+    color: var(--light-color);
+    background-color: var(--primary-button-color);
+}
+
+.btn-primary:hover {
+    filter: brightness(110%);
+    cursor: pointer;
+}
+
+.btn-outline {
+    border: 5px solid var(--primary-button-color);
+    background-color: #f3f3f300;
+    color: var(--primary-button-color);
+}
+
+.btn-outline:hover {
+    cursor: pointer;
+    background-color: var(--primary-button-color);
+    color: #fff;
+    filter: brightness(110%);
+}
+
+/* Field Groups */
+.field-group {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+}
+
+.field-group label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.field-group input {
+    font-family: 'rubik', sans-serif;
+    font-size: 1.2rem;
+    height: 35px;
+    background-color: #F4F3FB;
+    border: 3px solid #5C5890;
+    border-radius: 10px;
+    padding: 0 .5rem;
+}
+
+.field-group input:focus {
+    border: 3px solid #967dc5;
+}
+
+/* Button Groups */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.button-group button,
+.button-group input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 75px;
 }

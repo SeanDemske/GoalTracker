@@ -1,0 +1,8 @@
+/* Signup Page */
+#signup-signin-page {
+    justify-content: center;
+}
+
+#signup-signin-page form {
+    max-width: 400px;
+}

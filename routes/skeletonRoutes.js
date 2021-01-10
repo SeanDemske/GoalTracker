@@ -12,4 +12,12 @@ router.get("/:username/:goal_id", function(req, res, next) {
     return res.render("goal_detail.html");
 });
 
+router.get("/signup", function(req, res, next) {
+    return res.render("signup_form.html");
+})
+
+router.get("/signin", function(req, res, next) {
+    return res.render("signin_form.html");
+})
+
 module.exports = router;

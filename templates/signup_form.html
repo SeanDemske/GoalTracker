@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section id="signup-signin-page">
+        <h1 class="text-underline">CoolTitle</h1>
+        <form action="">
+            <div class="field-group">
+                <label for="username">Username</label>
+                <input type="text" name="username">
+            </div>
+
+            <div class="field-group">
+                <label for="email">Email</label>
+                <input type="email" name="email">
+            </div>
+
+            <div class="field-group">
+                <label for="password">Password</label>
+                <input type="password" name="password">
+            </div>
+
+            <div class="field-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="text" name="confirm-password">
+            </div>
+
+            <div class="button-group">
+                <input class="btn btn-primary" type="submit" value="Sign Up">
+                <button class="btn btn-outline">Cancel</button>
+            </div>
+
+        </form>
+    </section>
+{% endblock %}
