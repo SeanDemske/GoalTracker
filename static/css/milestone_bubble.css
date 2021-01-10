@@ -63,6 +63,7 @@
 
 .milestone-bubble .milestone-title {
     padding: .5rem 1rem;
+    padding-top: 0;
     font-weight: 600;
 }
 
@@ -87,7 +88,7 @@
 }
 
 /* Milestone Bubbles medium screen size */
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 770px) {
     /* Right Side */
     #goal-roadmap ul li:nth-child(odd) .milestone-bubble {
         left: 52.5%;

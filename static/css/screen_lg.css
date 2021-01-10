@@ -10,3 +10,13 @@
 #signin-signout button {
     margin: 0 15px;
 }
+
+/* Signup Page */
+#signup-signin-page {
+    justify-content: center;
+}
+
+#signup-signin-page form {
+    max-width: 500px;
+}
+
