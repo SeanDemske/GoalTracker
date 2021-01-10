@@ -5,8 +5,8 @@ THE goal tracking app.
 -Install Node v12.17.0 or higher  
 -Install psql (PostgreSQL) 13.0  or higher  
 -CD into project directory  
--Run 'createdb goaltracker' with a password of developer
--Run 'goaltracker < database.sql'
+-Run 'createdb goaltracker' with a password of developer  
+-Run 'goaltracker < database.sql'  
 -Run 'npm install' to install dependencies   
 -Install nodemon for live monitoring  
 -Run 'nodemon app.js'  
