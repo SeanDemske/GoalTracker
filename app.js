@@ -43,13 +43,14 @@ app.get("/", function(req, res, next) {
 //       }
 //      
 
-app.get("/db/adduser", async function(req, res, next) {
+app.get("/db/:username", async function(req, res, next) {
     try {
+        let username = req.params.username;
         const result = await db.query(`
             INSERT INTO users (username, email, password)
             VALUES ($1, $2, $3)
             RETURNING username, email, password`, 
-            ["SMasters", "smasters@email.com", "password"]
+            [username, "smasters@email.com", "password"]
         );
 
         if (result.rows.length === 0) {
