@@ -1,0 +1,148 @@
+/* Milestone Bubbles small screen size */
+.goal-li {
+    margin-bottom: 4rem;
+}
+
+.milestone {
+    height: 100%;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.milestone::-webkit-scrollbar {
+    display: none;
+}
+
+.milestone-bubble {
+    margin: 2rem 0;
+    margin-left: 3rem;
+    max-width: 260px;
+    height: 120px;
+	position: relative;
+	background: var(--milestone-bubble-color);
+    border-radius: .4em;
+    border-bottom: 10px solid var(--milestone-bubble-color);
+    border-top: 10px solid var(--milestone-bubble-color);
+}
+
+.goal-li > .milestone-bubble:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-right-color: var(--milestone-bubble-color);
+	border-left: 0;
+	margin-top: -20px;
+    margin-left: -20px;
+}
+
+#goal-roadmap ul li > div:before {
+    content: '';
+    position: absolute;
+    left: -55px;
+    top: 36px;
+    width: 25px;
+    height: 25px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+}
+
+.shape-line {
+    position: absolute;
+    bottom: 50px;
+    left: -46px;
+    height: 180px;
+    width: 7px;
+    background-color: #FFDA7A;
+    z-index: -1;
+}
+
+.milestone-bubble .milestone-title {
+    padding: .5rem 1rem;
+    font-weight: 600;
+}
+
+.milestone-bubble .task-list {
+    padding-left: 2.5rem;
+    padding-bottom: .25rem;
+    list-style: disc;
+}
+
+.milestone-bubble .task-list li {
+    margin: .2rem 0;
+}
+
+.milestone-bubble .milestone-timespent {
+    margin-left: 1rem;
+    margin-top: .75rem;
+    font-size: .8rem;
+}
+
+.milestone-bubble .milestone-tags {
+    margin-left: 1rem;
+}
+
+/* Milestone Bubbles medium screen size */
+@media screen and (min-width: 700px) {
+    /* Right Side */
+    #goal-roadmap ul li:nth-child(odd) .milestone-bubble {
+        left: 52.5%;
+    }
+
+    #goal-roadmap ul li:nth-child(odd) .shape-line {
+        left: -17%;
+        bottom: 55px;
+        height: 220px;
+    }
+
+    #goal-roadmap ul li:nth-child(odd) div:before {
+        left: -21%;
+        top: 52px;
+    }
+
+    /* Left Side */
+    #goal-roadmap ul li:nth-child(even) .milestone-bubble {
+        left: -64%;
+    }
+
+    #goal-roadmap ul li:nth-child(even) .shape-line {
+        left: 117%;
+        bottom: 65px;
+        height: 200px;
+    }
+
+    #goal-roadmap ul li:nth-child(even) div:before {
+        left: 113%;
+        top: 48px;
+    }
+
+    #goal-roadmap ul li:nth-child(even) .milestone-bubble:after {
+        content: '';
+        position: absolute;
+        left: auto;
+        right: 0;
+        top: 50%;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-left-color: var(--milestone-bubble-color);
+        border-right: 0;
+        margin-top: -20px;
+        margin-right: -20px;
+    }
+
+    .shape-line {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .milestone-bubble {
+        max-width: 320px;
+        height: 140px;
+    }
+
+}

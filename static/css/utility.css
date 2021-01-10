@@ -7,6 +7,7 @@
     --light-color: #f3f3f3;
     --dark-color: #333;
     --unselected-color: #D4C9C9;
+    --text-info: #dbc794;
     
     --faded-text: #b9b9b9de;
 
@@ -57,6 +58,7 @@ ul {
 .text-dark { color: var(--dark-color) }
 .text-light { color: var(--light-color) }
 .text-faded { color: var(--faded-text) }
+.text-info { color: var(--text-info) }
 
 
 /* ********************************* */
@@ -81,87 +83,4 @@ ul {
     text-decoration: underline;
     color: var(--light-color);
     cursor: pointer;
-}
-
-/* Milestone Bubbles */
-.goal-li {
-    margin-bottom: 4rem;
-}
-
-.milestone {
-    height: 100%;
-    overflow-y: auto;
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
-}
-
-.milestone::-webkit-scrollbar {
-    display: none;
-}
-
-.milestone-bubble {
-    margin: 2rem 0;
-    margin-left: 3rem;
-    width: 200px;
-    height: 100px;
-	position: relative;
-	background: var(--milestone-bubble-color);
-    border-radius: .4em;
-    border-bottom: 10px solid var(--milestone-bubble-color);
-}
-
-.goal-li > .milestone-bubble:after {
-	content: '';
-	position: absolute;
-	left: 0;
-	top: 50%;
-	width: 0;
-	height: 0;
-	border: 20px solid transparent;
-	border-right-color: var(--milestone-bubble-color);
-	border-left: 0;
-	margin-top: -20px;
-    margin-left: -20px;
-    z-index: 5;
-}
-
-#goal-roadmap ul li > div:before {
-    content: '';
-    position: absolute;
-    left: -55px;
-    top: 38px;
-    width: 25px;
-    height: 25px;
-    background: var(--secondary-color);
-    border-radius: 50%;
-}
-
-.shape-line {
-    position: absolute;
-    bottom: 50px;
-    left: -46px;
-    height: 155px;
-    width: 7px;
-    background-color: #FFDA7A;
-    z-index: -1;
-}
-
-.milestone-bubble .milestone-title {
-    padding: .5rem 1rem;
-}
-
-.milestone-bubble .task-list {
-    padding-left: 2.5rem;
-    padding-bottom: 1rem;
-    list-style: disc;
-}
-
-.milestone-bubble .task-list li {
-    margin: .2rem 0;
-}
-
-.milestone-bubble .milestone-timespent {
-    margin-left: 1rem;
-    margin-top: .75rem;
-    font-size: .8rem;
 }
