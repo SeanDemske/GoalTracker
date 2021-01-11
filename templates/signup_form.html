@@ -2,10 +2,10 @@
 {% block content %}
     <section id="signup-signin-page">
         <h1 class="text-underline">CoolTitle</h1>
-        <form action="">
+        <form action="/signup" method="POST">
             <div class="field-group">
                 <label for="username">Username</label>
-                <input type="text" name="username">
+                <input type="text" name="username" required>
             </div>
 
             <div class="field-group">
@@ -15,12 +15,12 @@
 
             <div class="field-group">
                 <label for="password">Password</label>
-                <input type="password" name="password">
+                <input type="password" name="password" required>
             </div>
 
             <div class="field-group">
                 <label for="confirm-password">Confirm Password</label>
-                <input type="text" name="confirm-password">
+                <input type="password" name="confirmPassword" required>
             </div>
 
             <div class="button-group">

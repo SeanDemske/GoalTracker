@@ -11,26 +11,20 @@ nunjucks.configure("templates", {
     express: app
 });
 
-// const db = knex({
-//     client: 'pg',
-//     connection: {
-//         connectionString : process.env.DATABASE_URL,
-//         ssl: {
-//             rejectUnauthorized: false
-//           }
-//     }
-//   });
-
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use('/static', express.static('static'))
 
-const skeletonRoutes = require("./routes/skeletonRoutes")
-app.use("/skeleton", skeletonRoutes);
+const rootRoutes = require("./routes/rootRoutes");
+const userRoutes = require("./routes/userRoutes");
+app.use("/", rootRoutes);
+app.use("/:username", userRoutes);
 
-app.get("/", function(req, res, next) {
-    return res.render("index.html");
-})
+
+
+
+
+
 
 // Example route to demonstrate writing to our database
 // Important notes:
@@ -42,7 +36,6 @@ app.get("/", function(req, res, next) {
 //           throw new ExpressError("error message", status_code)
 //       }
 //      
-
 app.get("/db/:username", async function(req, res, next) {
     try {
         let username = req.params.username;
@@ -63,10 +56,17 @@ app.get("/db/:username", async function(req, res, next) {
     }
 })
 
-// app.use(function(req, res, next) {
-//     const err = new ExpressError("Not Found", 404);
-//     return next(err);
-// });
+
+
+
+
+
+
+
+app.use(function(req, res, next) {
+    const err = new ExpressError("Not Found", 404);
+    return next(err);
+});
   
 // General error handler
 app.use(function(err, req, res, next) {

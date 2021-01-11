@@ -11,6 +11,11 @@
     margin: 0 15px;
 }
 
+/* Goal Detail View */
+#goal-header {
+    margin: 0 15rem;
+}
+
 /* Signup Page */
 #signup-signin-page {
     justify-content: center;
@@ -20,3 +25,16 @@
     max-width: 500px;
 }
 
+/* User Dashboard */
+#goals-section div {
+    padding: 0 10rem;
+}
+
+#goals-section p {
+    max-width: 900px;
+    font-size: 1.5rem;
+}
+
+#user-dash #dash-header {
+    margin: 0 10rem;
+}

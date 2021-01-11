@@ -80,7 +80,61 @@
 }
 
 /* User Dashboard */
-#user-dash {
-    position: relative;
+#user-dash #dash-header {
+    margin: 0 4rem;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 2rem;
+    font-family: 'Raleway', sans-serif;
+    vertical-align: bottom;
+    font-size: 2.3rem;
 }
+
+span .nav-username,
+.goal-time-spent {
+    display: none;
+}
+
+#goals-section {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+#goals-section h1 {
+    max-width: 50%;
+    text-align: left;
+    font-size: 1.8rem;
+}
+
+#goals-section p {
+    font-size: 1rem;
+    max-width: 500px;
+}
+
+#goals-section div {
+    height: 90px;
+    color: var(--light-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem;
+    background-color: #5D5A93;
+}
+
+#goals-section div:nth-child(odd) {
+    background-color: #504E81;
+}
+
+.hacky-padding {
+    visibility: hidden;
+}
+
+#goals-section div:hover {
+    filter: brightness(110%);
+}
+
 
