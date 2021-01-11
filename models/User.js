@@ -22,8 +22,8 @@ class User {
     }
 
     // If both passwords match return true else return passwords must match error
-    static checkRegisterPasswordsMatch(password, confirmPassword, next) {
-        return password === confirmPassword ? true : next(new ExpressError("Passwords must match", 400));
+    static checkRegisterPasswordsMatch(password, confirmPassword) {
+        return password === confirmPassword ? true : false;
     }
 
     // Grabs user from sql query and compares input password with hashed password to authenticate. 
