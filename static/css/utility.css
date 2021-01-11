@@ -51,6 +51,10 @@ body {
     background: var(--light-color);
 }
 
+a {
+    text-decoration: none;
+}
+
 h1 {
     font-family: 'Raleway', sans-serif;
 }
