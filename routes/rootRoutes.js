@@ -18,7 +18,9 @@ router.get("/signup", function(req, res, next) {
 router.post("/signup", async function(req, res, next) {
     const { username, password, confirmPassword, email } = req.body;
 
-    User.checkRegisterPasswordsMatch(password, confirmPassword, next);
+    if (!User.checkRegisterPasswordsMatch(password, confirmPassword)) {
+        return next(new ExpressError("Passwords must match", 400));
+    };
     try {
         let user = await User.register({ username, password, email });
         return res.redirect(`/${user.username}`);
