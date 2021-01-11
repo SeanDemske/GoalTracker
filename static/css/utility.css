@@ -176,6 +176,22 @@ i {
     margin: 2rem 0;
 }
 
+.button-group a {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    width: 250px;
+    height: 75px;
+    text-decoration: none;
+}
+
+.button-group a span {
+    margin: auto 0;
+    text-decoration: none;
+}
+
 .button-group button,
 .button-group input {
     display: flex;

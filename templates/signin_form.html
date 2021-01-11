@@ -2,7 +2,7 @@
 {% block content %}
     <section id="signup-signin-page">
         <h1 class="text-underline">CoolTitle</h1>
-        <form action="">
+        <form action="/signin" method="POST">
             <div class="field-group">
                 <label for="username">Username</label>
                 <input type="text" name="username">
@@ -15,7 +15,7 @@
 
             <div class="button-group">
                 <input class="btn btn-primary" type="submit" value="Sign In">
-                <button class="btn btn-outline">Cancel</button>
+                <a href="/" class="btn btn-outline"><span>Cancel</span></a>
             </div>
 
         </form>
