@@ -16,6 +16,10 @@ router.get("/signup", function(req, res, next) {
     return res.render("signup_form.html");
 })
 
+router.get("/dash", function(req, res, next) {
+    return res.render("user_dash.html");
+})
+
 router.get("/signin", function(req, res, next) {
     return res.render("signin_form.html");
 })

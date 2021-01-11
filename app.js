@@ -63,10 +63,10 @@ app.get("/db/:username", async function(req, res, next) {
     }
 })
 
-app.use(function(req, res, next) {
-    const err = new ExpressError("Not Found", 404);
-    return next(err);
-});
+// app.use(function(req, res, next) {
+//     const err = new ExpressError("Not Found", 404);
+//     return next(err);
+// });
   
 // General error handler
 app.use(function(err, req, res, next) {
