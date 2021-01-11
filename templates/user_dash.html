@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section id="user-dash">
+        <!-- 
+            Actual dashboard shit goes here
+         -->
+
+        <div class="add-goal">
+            <h1 class="text-underline">+Add Goal</h1>
+            <div class="add-goal-form" hidden>
+                <div class="container">
+                    <p class="text-dark text-center">Let's do this!</p>
+                    <div class="field-group">
+                        <p class="text-faded">What do you want to achieve?</p>
+                        <label for="goal-title">Goal Title</label>
+                        <input type="text" name="goal-title">
+                    </div>
+        
+                    <div class="field-group">
+                        <p class="text-faded">Add some milestones to get there!</p>
+                        <label for="milestone-X-title">Milestone {{ 1's }} Name</label>
+                        <input type="password" name="milestone-X-title">
+                    </div>
+
+                    <div class="field-group">
+                        <p class="text-faded">Add some milestones to get there!</p>
+                        <label class="text-underline" for="milestone-X-title">Add Milestone Tasks</label>
+                        <i class="fas fa-plus fa-2x"></i>
+                    </div>
+
+                    <div class="field-group">
+                        <p class="text-faded">Add more milestones or get started!</p>
+                        <label class="text-underline" for="milestone-X-title">Add more milstones</label>
+                        <i class="fas fa-plus fa-2x"></i>
+                    </div>
+
+
+
+
+
+
+                    <div class="field-group">
+                        <p class="text-faded">What do you want to achieve?</p>
+                        <label for="goal-title">Goal Title</label>
+                        <input type="text" name="goal-title">
+                    </div>
+        
+                    <div class="field-group">
+                        <p class="text-faded">Add some milestones to get there!</p>
+                        <label for="milestone-X-title">Milestone {{ 1's }} Name</label>
+                        <input type="password" name="milestone-X-title">
+                    </div>
+
+                    <div class="container">
+                        <button class="btn btn-primary">Start Goal!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="/static/js/addGoalTransition.js"></script>
+{% endblock %}

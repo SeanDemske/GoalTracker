@@ -1,0 +1,78 @@
+/* Small screen size */
+.add-goal {
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    background-color: #fff;
+    height: 75px;
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+    transition: all 0.25s ease;
+}
+
+.add-goal .field-group {
+    margin: 2rem 0;
+    width: 280px;
+}
+
+.add-goal h1 {
+    cursor: pointer;
+}
+
+.add-goal .field-group p {
+    font-size: 1.2rem;
+}
+
+.add-goal-form {
+    width: 100%;
+    height: 95%;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.add-goal-form .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-goal-form button {
+    width: 175px;
+    height: 60px;
+}
+
+.add-goal-form::-webkit-scrollbar {
+    display: none;
+}
+
+/* Large Size */
+@media screen and (min-width: 770px) {
+    .add-goal {
+        width: 700px;
+        position: fixed;
+        left: 50%;
+        margin-left: -350px; /* Negative half of width. */
+    }
+
+    .add-goal-form {
+        width: 700px;
+        overflow-y: auto;
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+    .add-goal .field-group input {
+        width: 100%;
+    }
+
+    .add-goal .field-group {
+        width: 500px;
+    }
+}
+

@@ -59,6 +59,10 @@ ul {
     list-style: none;
 }
 
+i {
+    margin: 1rem 0;
+}
+
 .text-primary { color: var(--primary-color) }
 .text-secondary { color: var(--secondary-color) }
 .text-dark { color: var(--dark-color) }
@@ -67,7 +71,7 @@ ul {
 .text-info { color: var(--text-info) }
 
 .text-underline { text-decoration: underline; }
-
+.text-center { text-align: center; }
 
 /* ********************************* */
 /* Buttons */
@@ -104,6 +108,10 @@ ul {
     padding: 1rem 1rem;
     border-radius: 10px;
     margin: .5rem 0;
+}
+
+.btn:focus {
+    border: 5px solid #7b78b9;
 }
 
 .btn-primary {
