@@ -1,8 +1,6 @@
 const express = require("express");
-const bcrypt = require('bcrypt-nodejs');
 const nunjucks = require("nunjucks");
 const ExpressError = require("./expressError");
-const knex = require('knex')
 const db = require("./db");
 
 const app = express();
