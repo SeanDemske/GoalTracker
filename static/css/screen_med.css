@@ -6,3 +6,21 @@
 #signup-signin-page form {
     max-width: 400px;
 }
+
+/* User Dashboard */
+#user-dash #dash-header {
+    margin: 0 2rem;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 2rem;
+    font-family: 'Raleway', sans-serif;
+    vertical-align: bottom;
+    font-size: 2.3rem;
+}
+
+span .nav-username,
+.goal-time-spent {
+    display: inline;
+}

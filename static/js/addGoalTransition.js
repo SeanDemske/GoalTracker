@@ -1,4 +1,4 @@
-console.log("connected");
+// Script for sliding the add goal form up and closing it
 
 const $addGoalTab = $(".add-goal")
 const $addGoalTabH1 = $(".add-goal h1")
