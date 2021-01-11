@@ -2,6 +2,7 @@ const express = require("express");
 const nunjucks = require("nunjucks");
 const ExpressError = require("./expressError");
 const db = require("./db");
+const authenticateJWT = require("./middleware/auth");
 
 const app = express();
 nunjucks.configure("templates", {
@@ -12,6 +13,8 @@ nunjucks.configure("templates", {
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use('/static', express.static('static'))
+app.use(authenticateJWT);
+
 
 const rootRoutes = require("./routes/rootRoutes");
 const userRoutes = require("./routes/userRoutes");
