@@ -11,15 +11,25 @@ const router = new Router();
 
 // Landing Page
 router.get("/", function(req, res, next) {
+    if (req.user) {
+        return res.redirect(`/${req.user.username}`);
+    }
     return res.render("index.html");
 });
 
 router.get("/signup", function(req, res, next) {
+    if (req.user) {
+        return res.redirect(`/${req.user.username}`);
+    }
     return res.render("signup_form.html");
 });
 
 router.post("/signup", async function(req, res, next) {
     const { username, password, confirmPassword, email } = req.body;
+
+    if (req.user) {
+        return res.redirect(`/${req.user.username}`);
+    }
 
     if (!User.checkRegisterPasswordsMatch(password, confirmPassword)) {
         return next(new ExpressError("Passwords must match", 400));
@@ -33,24 +43,33 @@ router.post("/signup", async function(req, res, next) {
 });
 
 router.get("/signin", function(req, res, next) {
+    if (req.user) {
+        return res.redirect(`/${req.user.username}`);
+    }
     return res.render("signin_form.html");
 });
 
 router.post("/signin", async function(req, res, next) {
     const { username, password } = req.body;
 
-    const user = await User.authenticate(username, password);
-    if (user === true) {
-
+    const validCredentials = await User.authenticate(username, password);
+    if (validCredentials === true) {
+        const user = await User.get(username);
         const accessToken = jwt.sign(user, SECRET_KEY)
-        res.cookie('token', accessToken,);
+        res.cookie('token', accessToken);
+
         return res.redirect(`/${user.username}`);
     } else {
         return res.redirect("/signin");
     }
+});
 
-    
-
+router.post("/signout", function(req, res, next) {
+    const token = req.cookies['token'];
+    if (token) {
+        res.cookie('token', '')
+    }
+    return res.redirect("/")
 });
 
 module.exports = router;

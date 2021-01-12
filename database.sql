@@ -16,7 +16,7 @@ CREATE TABLE users
 CREATE TABLE goals
 (
     id SERIAL PRIMARY KEY,
-    username text NOT NULL REFERENCES users,
+    username text NOT NULL REFERENCES users ON DELETE CASCADE,
     goal_name text,
     created_at timestamp without time zone default CURRENT_TIMESTAMP,
     completed boolean default FALSE,
@@ -26,7 +26,7 @@ CREATE TABLE goals
 CREATE TABLE milestones
 (
     id SERIAL PRIMARY KEY,
-    goal_id integer REFERENCES goals,
+    goal_id integer REFERENCES goals ON DELETE CASCADE,
     completed boolean default FALSE,
     tags text,
     milestone_name text NOT NULL
@@ -35,7 +35,7 @@ CREATE TABLE milestones
 CREATE TABLE tasks
 (
     id SERIAL PRIMARY KEY,
-    milestone_id integer REFERENCES milestones,
+    milestone_id integer REFERENCES milestones ON DELETE CASCADE,
     task_name text NOT NULL,
     completed boolean default FALSE
 );
