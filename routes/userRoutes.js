@@ -1,4 +1,5 @@
 const Router = require("express").Router;
+const User = require("../models/User");
 
 const router = new Router();
 
@@ -41,7 +42,7 @@ router.post("/create_goal", function(req, res, next) {
         return res.redirect(`/${req.user.username}/${req.params.goal_id}`);
     }
 
-    console.log("Data sent to server", req.body);
+    User.createGoal(req.user.username, req.body, next);
 
     return res.render("goal_detail.html", req.user);
 });

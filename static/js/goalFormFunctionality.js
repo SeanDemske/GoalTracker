@@ -13,7 +13,7 @@ class MilestoneUI {
                 <div class="field-group">
                     <p class="text-faded">Add some milestones to get there!</p>
                     <label for="milestone-${ this.milestoneNum }-title">Milestone ${ this.milestoneNum }</label>
-                    <input type="text" name="milestone-${ this.milestoneNum }-title">
+                    <input type="text" name="milestone-${ this.milestoneNum }-title" required>
                 </div>
     
                 <div class="field-group mb-0">
@@ -42,7 +42,7 @@ class MilestoneUI {
         let div = $(`
             <div class="field-group">
                 <label for="milestone-${ this.milestoneNum }-task-${ this.taskNum }">Task ${ this.taskNum }</label>
-                <input type="text" name="milestone-${ this.milestoneNum }-task-${ this.taskNum }">
+                <input type="text" name="milestone-${ this.milestoneNum }-task-${ this.taskNum }" required>
             </div>
         `);
         $(`#task-section-${this.milestoneNum}`).append(div);
