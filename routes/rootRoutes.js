@@ -43,8 +43,8 @@ router.post("/signin", async function(req, res, next) {
     if (user === true) {
 
         const accessToken = jwt.sign(user, SECRET_KEY)
-        
-        return res.redirect(`/${user.username}?t=${accessToken}`);
+        res.cookie('token', accessToken,);
+        return res.redirect(`/${user.username}`);
     } else {
         return res.redirect("/signin");
     }

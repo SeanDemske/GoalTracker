@@ -3,6 +3,7 @@ const nunjucks = require("nunjucks");
 const ExpressError = require("./expressError");
 const db = require("./db");
 const authenticateJWT = require("./middleware/auth");
+const cookieParser = require('cookie-parser');
 
 const app = express();
 nunjucks.configure("templates", {
@@ -13,6 +14,7 @@ nunjucks.configure("templates", {
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use('/static', express.static('static'))
+app.use(cookieParser());
 app.use(authenticateJWT);
 
 
@@ -20,49 +22,6 @@ const rootRoutes = require("./routes/rootRoutes");
 const userRoutes = require("./routes/userRoutes");
 app.use("/", rootRoutes);
 app.use("/:username", userRoutes);
-
-
-
-
-
-
-
-// Example route to demonstrate writing to our database
-// Important notes:
-//     the db.query method takes time so it must be awaited and used inside
-//       an async function. It returns an array of rows selected via result.rows;
-//  
-//      To check if a data was found (ex: finding a user account, goal etc.)
-//      Use if (result.rows.length === 0) {
-//           throw new ExpressError("error message", status_code)
-//       }
-//      
-app.get("/db/:username", async function(req, res, next) {
-    try {
-        let username = req.params.username;
-        const result = await db.query(`
-            INSERT INTO users (username, email, password)
-            VALUES ($1, $2, $3)
-            RETURNING username, email, password`, 
-            [username, "smasters@email.com", "password"]
-        );
-
-        if (result.rows.length === 0) {
-            throw new ExpressError("Invalid request", 400);
-        }
-        
-        return res.json(result.rows[0]);
-    } catch(err) {
-        return next(err);
-    }
-})
-
-
-
-
-
-
-
 
 app.use(function(req, res, next) {
     const err = new ExpressError("Not Found", 404);

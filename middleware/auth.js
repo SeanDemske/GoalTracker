@@ -5,7 +5,7 @@ const { SECRET_KEY } = require("../config");
 
 function authenticateJWT(req, res, next) {
     try {
-        const token = req.query.t;
+        const token = req.cookies['token'];
         console.log(token);
         const payload = jwt.verify(token, SECRET_KEY);
         req.user = payload;
