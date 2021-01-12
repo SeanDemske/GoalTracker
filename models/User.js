@@ -94,6 +94,50 @@ class User {
         console.log("creation successful");
         return true;
     }
+
+
+    // Needs to be updated to return more data
+    static async getGoals(username) {
+        const result = await db.query(`
+            SELECT id, goal_name, created_at, completed
+            FROM goals
+            WHERE username = $1`,
+            [username]
+        );
+        return result.rows;
+    }
+
+    static async deleteGoal(goalId) {
+        const result = await db.query(`
+            DELETE FROM goals
+            WHERE id = $1`,
+            [goalId]
+        );
+    }
 }
+
+
+// Returns:
+// [
+//     {
+//         goalId,
+//         goalName,
+//         goalUsername,
+//         milestones: [
+//             {
+//                 milestoneId,
+//                 milestoneName,
+//                 completed
+//             }
+//         ],
+//         tasks: [
+//             {
+//                 taskId,
+//                 taskName,
+//                 completed
+//             }
+//         ]
+//     }
+// ]
 
 module.exports = User;

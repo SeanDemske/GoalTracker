@@ -104,7 +104,7 @@ span .nav-username,
 }
 
 #goals-section h1 {
-    max-width: 50%;
+    /* max-width: 50%; */
     text-align: left;
     font-size: 1.8rem;
 }
@@ -123,6 +123,10 @@ span .nav-username,
     align-items: center;
     padding: 0 3rem;
     background-color: #5D5A93;
+}
+
+#goals-section a {
+    width: 100%;
 }
 
 #goals-section div:nth-child(odd) {
