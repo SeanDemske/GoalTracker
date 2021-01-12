@@ -35,7 +35,11 @@ router.post("/signup", async function(req, res, next) {
         return next(new ExpressError("Passwords must match", 400));
     };
     try {
-        let user = await User.register({ username, password, email });
+        await User.register({ username, password, email });
+        const user = await User.get(username);
+        const accessToken = jwt.sign(user, SECRET_KEY)
+        res.cookie('token', accessToken);
+        
         return res.redirect(`/${user.username}`);
     } catch(err) {
         return next(err);
