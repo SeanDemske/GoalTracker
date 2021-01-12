@@ -3,6 +3,9 @@ const Router = require("express").Router;
 const User = require("../models/User");
 const ExpressError = require("../expressError");
 const db = require("../db");
+const authenticateJWT = require("../middleware/auth");
+const jwt = require("jsonwebtoken");
+const { SECRET_KEY } = require("../config");
 
 const router = new Router();
 
@@ -38,10 +41,16 @@ router.post("/signin", async function(req, res, next) {
 
     const user = await User.authenticate(username, password);
     if (user === true) {
-        return res.redirect(`/${user.username}`);
+
+        const accessToken = jwt.sign(user, SECRET_KEY)
+        
+        return res.redirect(`/${user.username}?t=${accessToken}`);
     } else {
         return res.redirect("/signin");
     }
+
+    
+
 });
 
 module.exports = router;
