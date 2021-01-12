@@ -27,6 +27,7 @@ CREATE TABLE milestones
 (
     id SERIAL PRIMARY KEY,
     goal_id integer REFERENCES goals ON DELETE CASCADE,
+    sequence integer,
     completed boolean default FALSE,
     tags text,
     milestone_name text NOT NULL
@@ -36,6 +37,7 @@ CREATE TABLE tasks
 (
     id SERIAL PRIMARY KEY,
     milestone_id integer REFERENCES milestones ON DELETE CASCADE,
+    sequence integer,
     task_name text NOT NULL,
     completed boolean default FALSE
 );

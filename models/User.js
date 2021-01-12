@@ -52,7 +52,47 @@ class User {
     }
 
     static async createGoal(username, body) {
-        // Create goal will go here
+        try {
+            let goalId;
+            let currentMilestoneId;
+            for (const property in body) {
+                // Goal Insertions
+                if (property === "goal-title") {
+                    let result = await db.query(`
+                    INSERT INTO goals (username, goal_name)
+                    VALUES ($1, $2)
+                    RETURNING id`,
+                    [username, body[property]]
+                );
+                goalId = result.rows[0];
+
+                // Milestone Insertions
+                } else if (property.indexOf("milestone-") > -1 && property.indexOf("-title") > -1) {
+                    let sequence = property.split("-")[1];
+                    let result = await db.query(`
+                        INSERT INTO milestones (goal_id, milestone_name, sequence)
+                        VALUES ($1, $2, $3)
+                        RETURNING id`,
+                        [goalId.id, body[property], sequence]
+                    );
+                    currentMilestoneId = result.rows[0];
+    
+                // Task Insertions
+                } else if (property.indexOf("task") > -1) {
+                    let sequence = property.split("-")[3];
+                    let result = await db.query(`
+                        INSERT INTO tasks (milestone_id, task_name, sequence)
+                        VALUES ($1, $2, $3)
+                        RETURNING id`,
+                        [currentMilestoneId.id, body[property], sequence]
+                    );
+                }
+            }
+        } catch(err) {
+            throw new ExpressError("Invalid creation", 400);
+        }
+        console.log("creation successful");
+        return true;
     }
 }
 
