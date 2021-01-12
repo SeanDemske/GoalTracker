@@ -21,7 +21,10 @@ app.use(authenticateJWT);
 const rootRoutes = require("./routes/rootRoutes");
 const userRoutes = require("./routes/userRoutes");
 app.use("/", rootRoutes);
-app.use("/:username", userRoutes);
+app.use("/:username", function(req, res, next){
+    req.username_param = req.params.username;
+    next();
+}, userRoutes);
 
 app.use(function(req, res, next) {
     const err = new ExpressError("Not Found", 404);

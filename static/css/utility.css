@@ -8,13 +8,9 @@
     --dark-color: #333;
     --unselected-color: #D4C9C9;
     --text-info: #dbc794;
-
     --primary-button-color: #484675;
-    
     --faded-text: #b9b9b9de;
-
     --milestone-bubble-color: #837596;
-
     --max-width: 1100px;
 }
 
@@ -101,6 +97,10 @@ i {
     background: none;
     border: none;
     color: #565483;
+}
+
+.btn-return-arrow {
+    cursor: pointer;
 }
 
 .btn-hyperlink:hover,

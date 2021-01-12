@@ -5,6 +5,16 @@ const { BCRYPT_WORK_FACTOR } = require("../config");
 
 class User {
 
+    static async get(username) {
+        const result = await db.query(`
+        SELECT username, email
+        FROM users
+        WHERE username = $1`,
+        [username]
+        );
+        return result.rows[0];
+    }
+
     // Inserts user into database and returns user object { username: "exampleuser", email: "example@email.com" }
     static async register({ username, password, email }) {
         let hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
