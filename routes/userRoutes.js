@@ -30,4 +30,20 @@ router.get("/:goal_id", function(req, res, next) {
     return res.render("goal_detail.html", req.user);
 });
 
+router.post("/create_goal", function(req, res, next) {
+    // Not signed in
+    if (!req.user) {
+        return res.redirect(`/signup`);
+    }
+
+    // Unauthorized Access
+    if (req.username_param !== req.user.username) {
+        return res.redirect(`/${req.user.username}/${req.params.goal_id}`);
+    }
+
+    console.log("Data sent to server", req.body);
+
+    return res.render("goal_detail.html", req.user);
+});
+
 module.exports = router;

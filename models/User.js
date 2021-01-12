@@ -50,6 +50,10 @@ class User {
         
         return await bcrypt.compare(password, user.password)
     }
+
+    static async createGoal(username, body) {
+        // Create goal will go here
+    }
 }
 
 module.exports = User;
