@@ -12,13 +12,13 @@ class MilestoneUI {
             <div class="milestone-group" id="milestone-${ this.milestoneNum }">
                 <div class="field-group">
                     <p class="text-faded">Add some milestones to get there!</p>
-                    <label for="milestone-X-title">Milestone ${ this.milestoneNum }</label>
-                    <input type="text" name="milestone-X-title">
+                    <label for="milestone-${ this.milestoneNum }-title">Milestone ${ this.milestoneNum }</label>
+                    <input type="text" name="milestone-${ this.milestoneNum }-title">
                 </div>
     
                 <div class="field-group mb-0">
                     <p class="text-faded">Add some tasks to complete your milestone</p>
-                    <label class="text-underline" for="milestone-X-title">Add Milestone Tasks</label>
+                    <label class="text-underline" for="milestone-${ this.milestoneNum }-task-${ this.taskNum }">Add Milestone Tasks</label>
                     
                 </div>
                 <div id="task-section-${ this.milestoneNum }">
@@ -41,8 +41,8 @@ class MilestoneUI {
         this.taskNum++;
         let div = $(`
             <div class="field-group">
-                <label for="task-${ this.taskNum }-title">Task ${ this.taskNum }</label>
-                <input type="text" name="task-${ this.taskNum }-title">
+                <label for="milestone-${ this.milestoneNum }-task-${ this.taskNum }">Task ${ this.taskNum }</label>
+                <input type="text" name="milestone-${ this.milestoneNum }-task-${ this.taskNum }">
             </div>
         `);
         $(`#task-section-${this.milestoneNum}`).append(div);

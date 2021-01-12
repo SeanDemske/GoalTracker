@@ -89,28 +89,31 @@
             <div class="add-goal-form" hidden>
                 <div class="container">
                     <p class="text-dark text-center">Let's do this!</p>
-
-                    <div id="milestone-1">
-                        <div class="field-group">
-                            <p class="text-faded">What do you want to achieve?</p>
-                            <label for="goal-title">Goal Title</label>
-                            <input type="text" name="goal-title">
+                    
+                    <form action="/{{ username }}/create_goal" method="POST">
+                        <div id="milestone-1">
+                            <div class="field-group">
+                                <p class="text-faded">What do you want to achieve?</p>
+                                <label for="goal-title">Goal Title</label>
+                                <input type="text" name="goal-title">
+                            </div>
                         </div>
-                    </div>
+    
+                        <div id="temp-milestone">
+                            <!-- Milestones Fields go here -->
+                        </div>
+    
+                        <div class="field-group">
+                            <p class="text-faded">Add more milestones or get started!</p>
+                            <label class="text-underline" for="milestone-X-title">Add another milestone</label>
+                            <button id="add-milestone-button" ><i class="fas fa-plus fa-2x"></i></button>
+                        </div>
+    
+                        <div class="container">
+                            <button class="btn btn-primary">Start Goal!</button>
+                        </div>
+                    </form>
 
-                    <div id="temp-milestone">
-                        <!-- Milestones Fields go here -->
-                    </div>
-
-                    <div class="field-group">
-                        <p class="text-faded">Add more milestones or get started!</p>
-                        <label class="text-underline" for="milestone-X-title">Add another milestone</label>
-                        <button id="add-milestone-button" ><i class="fas fa-plus fa-2x"></i></button>
-                    </div>
-
-                    <div class="container">
-                        <button class="btn btn-primary">Start Goal!</button>
-                    </div>
                 </div>
             </div>
         </div>
