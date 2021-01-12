@@ -48,7 +48,13 @@ body {
 }
 
 a {
+    color: inherit; 
     text-decoration: none;
+    width: max-content;
+}
+
+a h1 {
+    margin: 0;
 }
 
 h1 {
@@ -167,6 +173,18 @@ button#add-milestone-button:hover {
 button.add-task-button:focus,
 button#add-milestone-button:focus {
     color: var(--faded-text);
+    cursor: pointer;
+}
+
+.btn-trash {
+    background: none;
+    border: none;
+    color: #fff;
+}
+
+.btn-trash:hover {
+    border: none;
+    color: rgb(99, 35, 66);
     cursor: pointer;
 }
 

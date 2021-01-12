@@ -3,7 +3,7 @@ const User = require("../models/User");
 
 const router = new Router();
 
-router.get("/", function(req, res, next) {
+router.get("/", async function(req, res, next) {
     // Not signed in redirect to signup page
     if (!req.user) {
         return res.redirect(`/signup`);
@@ -13,6 +13,9 @@ router.get("/", function(req, res, next) {
     if (req.username_param !== req.user.username) {
         return res.redirect(`/${req.user.username}`);
     }
+
+    req.user.userGoals = await User.getGoals(req.user.username);
+    console.log(req.user.userGoals);
     
     return res.render("user_dash.html", req.user);
 });
@@ -42,9 +45,25 @@ router.post("/create_goal", function(req, res, next) {
         return res.redirect(`/${req.user.username}/${req.params.goal_id}`);
     }
 
-    User.createGoal(req.user.username, req.body, next);
+    User.createGoal(req.user.username, req.body);
 
-    return res.render("goal_detail.html", req.user);
+    return res.redirect(`/${req.user.username}`);
+});
+
+router.post("/:goal_id/delete", function(req, res, next) {
+    // Not signed in
+    if (!req.user) {
+        return res.redirect(`/signup`);
+    }
+
+    // Unauthorized Access
+    if (req.username_param !== req.user.username) {
+        return res.redirect(`/${req.user.username}/${req.params.goal_id}`);
+    }
+
+    User.deleteGoal(req.params.goal_id);
+
+    return res.redirect(`/${req.user.username}`);
 });
 
 module.exports = router;

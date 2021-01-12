@@ -9,64 +9,18 @@
         </header>
 
         <section id="goals-section">
-            <a href="/username/id">
-            <div>
 
-                    <h1>Get a dev job</h1>
-                    <p class="goal-time-spent">Time Spent: 5 days, 3 hours,
-                        55 minutes, 32 seconds</p>
-
-                <i class="fas fa-trash fa-3x"></i>
-            </div>
+            {% for userGoal in userGoals %}
+            <a href="/Sean">
+                <div>
+                    <h1>{{ userGoal.goal_name }}</h1>
+                    <p class="goal-time-spent">Time Spent: {{ userGoal.created_at }}</p>
+                    <form action="/{{ username }}/{{ userGoal.id }}/delete" method="POST">
+                        <button class="btn-trash"><i class="fas fa-trash fa-3x"></i></button>
+                    </form>
+                </div>
             </a>
-            <div>
-                <h1>Get a dev job</h1>
-                <p class="goal-time-spent">Time Spent: 5 days, 3 hours,
-                    55 minutes, 32 seconds</p>
-                <i class="fas fa-trash fa-3x"></i>
-            </div>
-            <div>
-                <h1>Get a dev job</h1>
-                <p class="goal-time-spent">Time Spent: 5 days, 3 hours,
-                    55 minutes, 32 seconds</p>
-                <i class="fas fa-trash fa-3x"></i>
-            </div>
-            <div>
-                <h1>Get a dev job</h1>
-                <p class="goal-time-spent">Time Spent: 5 days, 3 hours,
-                    55 minutes, 32 seconds</p>
-                <i class="fas fa-trash fa-3x"></i>
-            </div>
-            <div>
-                <h1>Get a dev job</h1>
-                <p class="goal-time-spent">Time Spent: 5 days, 3 hours,
-                    55 minutes, 32 seconds</p>
-                <i class="fas fa-trash fa-3x"></i>
-            </div>
-            <div>
-                <h1>Get a dev job</h1>
-                <p class="goal-time-spent">Time Spent: 5 days, 3 hours,
-                    55 minutes, 32 seconds</p>
-                <i class="fas fa-trash fa-3x"></i>
-            </div>
-            <div>
-                <h1>Get a dev job</h1>
-                <p class="goal-time-spent">Time Spent: 5 days, 3 hours,
-                    55 minutes, 32 seconds</p>
-                <i class="fas fa-trash fa-3x"></i>
-            </div>
-            <div>
-                <h1>Get a dev job</h1>
-                <p class="goal-time-spent">Time Spent: 5 days, 3 hours,
-                    55 minutes, 32 seconds</p>
-                <i class="fas fa-trash fa-3x"></i>
-            </div>
-            <div>
-                <h1>Get a dev job</h1>
-                <p class="goal-time-spent">Time Spent: 5 days, 3 hours,
-                    55 minutes, 32 seconds</p>
-                <i class="fas fa-trash fa-3x"></i>
-            </div>
+            {% endfor %}
 
             <div class="hacky-padding">
                 <h1>HACKY PADDING</h1>           
