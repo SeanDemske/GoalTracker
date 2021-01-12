@@ -74,6 +74,11 @@ i {
 .text-faded { color: var(--faded-text) }
 .text-info { color: var(--text-info) }
 
+.mt-0 { margin-top: 0 !important; }
+.mr-0 { margin-right: 0 !important; }
+.mb-0 { margin-bottom: 0 !important; }
+.ml-0 { margin-left: 0 !important; }
+
 .text-underline { text-decoration: underline; }
 .text-center { text-align: center; }
 
@@ -143,6 +148,26 @@ i {
     background-color: var(--primary-button-color);
     color: #fff;
     filter: brightness(110%);
+}
+
+button.add-task-button,
+button#add-milestone-button {
+    background: none;
+    border: none;
+    width: max-content;
+    height: max-content;
+}
+
+button.add-task-button:hover,
+button#add-milestone-button:hover {
+    color: var(--faded-text);
+    cursor: pointer;
+}
+
+button.add-task-button:focus,
+button#add-milestone-button:focus {
+    color: var(--faded-text);
+    cursor: pointer;
 }
 
 /* Field Groups */

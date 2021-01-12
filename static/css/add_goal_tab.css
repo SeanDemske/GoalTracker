@@ -51,6 +51,10 @@
     display: none;
 }
 
+.add-goal .milestone-group {
+    margin-top: 10rem;
+}
+
 /* Large Size */
 @media screen and (min-width: 770px) {
     .add-goal {
