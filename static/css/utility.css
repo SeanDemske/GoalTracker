@@ -88,6 +88,18 @@ i {
     display: none;
 }
 
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+}
+
+.fa-flag {
+    margin-right: .5rem;
+}
+
 /* ********************************* */
 /* Buttons */
 /* ********************************* */

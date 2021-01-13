@@ -2,14 +2,12 @@
 {% block content %}
     <header id="goal-header">
         <a href="/{{ username }}" class="btn-return-arrow"><i class="fas fa-arrow-left fa-2x"></i></a>
-        <span class="text-light"><i class="fas fa-flag fa-1x  text-secondary"></i> {{ activeGoal.goalName }}</span>
+        <span class="text-light truncate"><i class="fas fa-flag fa-1x  text-secondary"></i> {{ activeGoal.goalName }}</span>
         <button class="btn-return-arrow"><i class="fas fa-search fa-3x"></i></button>
     </header>
     
     <section id="goal-roadmap">
         <ul>
-
-
             {% if activeGoal.milestones.length == 1 %}
                 <li class="goal-li">
                     <div class="milestone-bubble">
@@ -64,80 +62,6 @@
                 </li>
                 {% endfor %}
             {% endif %}
-
-
-
-            <!-- ///////////
-                REFERENCE
-             -->
-
-            <!-- <li class="goal-li">
-                <div class="milestone-bubble">
-                    <div class="milestone">
-                        <p class="milestone-title text-light text-center">Interview with Google</p>
-                        <ul class="task-list text-light">
-                            <li>Task1</li>
-                            <li>Task2</li>
-                            <li>Task3</li>
-                            <li>Task4</li>
-                            <li>Task5</li>
-                        </ul>
-                        <div class="milestone-tags text-info">
-                            #grind #getthatbread
-                        </div>
-                    </div>
-                    <p class="milestone-timespent text-faded">
-                        Time Spent: 5 days, 3 hours,
-                        55 minutes, 32 seconds
-                    </p>
-                </div>
-            </li>
-            <li class="goal-li">
-                <div class="milestone-bubble">
-                    <div class="shape-line"></div>
-                    <div class="milestone">
-                        <p class="milestone-title text-light text-center">Interview with Google</p>
-                        <ul class="task-list text-light">
-                            <li>Task1</li>
-                            <li>Task2</li>
-                            <li>Task3</li>
-                            <li>Task4</li>
-                            <li>Task5</li>
-                        </ul>
-                        <div class="milestone-tags text-info">
-                            #grind #getthatbread
-                        </div>
-                    </div>
-                    <p class="milestone-timespent text-faded">
-                        Time Spent: 5 days, 3 hours,
-                        55 minutes, 32 seconds
-                    </p>
-                </div>
-            </li>
-            <li class="goal-li">
-                <div class="milestone-bubble">
-                    <div class="shape-line"></div>
-                    <div class="milestone">
-                        <p class="milestone-title text-light text-center">Interview with Google</p>
-                        <ul class="task-list text-light">
-                            <li>Task1</li>
-                            <li>Task2</li>
-                            <li>Task3</li>
-                            <li>Task4</li>
-                            <li>Task5</li>
-                        </ul>
-                        <div class="milestone-tags text-info">
-                            #grind #getthatbread
-                        </div>
-                    </div>
-                    <p class="milestone-timespent text-faded">
-                        Time Spent: 5 days, 3 hours,
-                        55 minutes, 32 seconds
-                    </p>
-                </div>
-            </li> -->
-
-
         </ul>
     </section>
 {% endblock %}  
