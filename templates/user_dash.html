@@ -11,7 +11,7 @@
         <section id="goals-section">
 
             {% for userGoal in userGoals %}
-            <a href="/Sean">
+            <a href="/{{ username }}/{{ userGoal.id }}">
                 <div>
                     <h1>{{ userGoal.goal_name }}</h1>
                     <p class="goal-time-spent">Time Spent: {{ userGoal.created_at }}</p>

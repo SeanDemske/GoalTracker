@@ -2,6 +2,7 @@ const db = require("../db");
 const ExpressError = require("../expressError");
 const bcrypt = require("bcrypt");
 const { BCRYPT_WORK_FACTOR } = require("../config");
+const formatGoalObject = require("../utils/dataFormatting")
 
 class User {
 
@@ -104,6 +105,7 @@ class User {
             WHERE username = $1`,
             [username]
         );
+
         return result.rows;
     }
 
@@ -114,9 +116,52 @@ class User {
             [goalId]
         );
     }
+
+    static async getGoal(goalId) {
+        const goalsQuery = await db.query(
+            `SELECT username,
+                    id AS goal_id,
+                    goal_name,
+                    created_at AS goal_created_at,
+                    completed AS goal_completed
+            FROM goals
+            WHERE id = $1`,
+            [goalId]
+        );
+        const goalData = goalsQuery.rows[0];
+
+        const milestoneQuery = await db.query(`
+            SELECT  milestone_name,
+                    id AS milestone_id,
+                    sequence AS milestone_sequence,
+                    completed AS milestone_completed,
+                    goal_id
+            FROM milestones
+            WHERE goal_id = $1`,
+            [goalId]
+        );
+        const milestoneData = milestoneQuery.rows;
+
+        const taskQuery = await db.query(`
+            SELECT  t.id AS task_id,
+                    t.sequence AS task_sequence,
+                    t.task_name,
+                    t.completed AS task_completed,
+                    t.milestone_id
+            FROM tasks AS t 
+                JOIN milestones AS m ON t.milestone_id = m.id
+            WHERE m.goal_id = $1`,
+            [goalId]
+        );
+        const taskData = taskQuery.rows;
+
+        return formatGoalObject(goalData, milestoneData, taskData);
+    }
 }
 
 
+
+// 6
 // Returns:
 // [
 //     {

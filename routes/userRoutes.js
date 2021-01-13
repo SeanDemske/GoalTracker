@@ -15,12 +15,11 @@ router.get("/", async function(req, res, next) {
     }
 
     req.user.userGoals = await User.getGoals(req.user.username);
-    console.log(req.user.userGoals);
-    
+
     return res.render("user_dash.html", req.user);
 });
 
-router.get("/:goal_id", function(req, res, next) {
+router.get("/:goal_id", async function(req, res, next) {
     // Not signed in
     if (!req.user) {
         return res.redirect(`/signup`);
@@ -30,6 +29,8 @@ router.get("/:goal_id", function(req, res, next) {
     if (req.username_param !== req.user.username) {
         return res.redirect(`/${req.user.username}/${req.params.goal_id}`);
     }
+
+    req.user.activeGoal = await User.getGoal(req.params.goal_id);
 
     return res.render("goal_detail.html", req.user);
 });
