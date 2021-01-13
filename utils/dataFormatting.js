@@ -31,7 +31,6 @@ function formatGoalObject(goalData, milestoneData, taskData) {
 
     for (const milestone of formattedObject.milestones) {
         for (task of taskData) {
-            console.log(milestone.tasks);
             if (milestone.tasks && task.milestone_id === milestone.milestoneId) {
                 milestone.tasks.push({
                     taskId: task.task_id,
@@ -54,3 +53,15 @@ function formatGoalObject(goalData, milestoneData, taskData) {
 }
 
 module.exports = formatGoalObject;
+
+// Convert created date to time spent
+//
+// 2021-01-12 19:07:13.647011
+// =>
+//
+// const timeSpent = {
+//     days,
+//     hours,
+//     minutes,
+//     seconds
+// }

@@ -1,7 +1,6 @@
 const express = require("express");
 const nunjucks = require("nunjucks");
 const ExpressError = require("./expressError");
-const db = require("./db");
 const authenticateJWT = require("./middleware/auth");
 const cookieParser = require('cookie-parser');
 
@@ -44,13 +43,3 @@ app.use(function(err, req, res, next) {
 app.listen(3000, function() {
     console.log("listening on 3000");
 });
-  
-// Requests
-
-// post signin
-// post register
-// get username
-// post goal_id
-// milestone
-// task
-// edit

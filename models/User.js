@@ -92,7 +92,6 @@ class User {
         } catch(err) {
             throw new ExpressError("Invalid creation", 400);
         }
-        console.log("creation successful");
         return true;
     }
 

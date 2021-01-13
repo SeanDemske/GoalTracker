@@ -32,7 +32,7 @@ router.post("/signup", async function(req, res, next) {
     }
 
     if (!User.checkRegisterPasswordsMatch(password, confirmPassword)) {
-        return next(new ExpressError("Passwords must match", 400));
+        return res.redirect("/signup");
     };
     try {
         await User.register({ username, password, email });
