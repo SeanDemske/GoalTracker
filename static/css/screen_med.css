@@ -24,3 +24,22 @@ span .nav-username,
 .goal-time-spent {
     display: inline;
 }
+
+/* Edit Milestone Page */
+#milestone-edit-page {
+    justify-content: center;
+}
+
+#milestone-edit-page form {
+    max-width: 400px;
+}
+
+#milestone-edit-page .container {
+    width: 700px;
+    height: max-content;
+    padding: 100px;
+}
+
+#milestone-edit-page form {
+    width: 100%;
+}

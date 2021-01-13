@@ -2,7 +2,7 @@ const db = require("../db");
 const ExpressError = require("../expressError");
 const bcrypt = require("bcrypt");
 const { BCRYPT_WORK_FACTOR } = require("../config");
-const formatGoalObject = require("../utils/dataFormatting")
+const { formatGoalObject}  = require("../utils/dataFormatting")
 
 class User {
 
@@ -195,6 +195,24 @@ class User {
                 [goal.goalId]
             );
         }
+    }
+
+    static async updateMilestoneName(data) {
+        await db.query(`
+            UPDATE milestones
+            SET milestone_name = $1
+            WHERE id = $2`,
+            [data.milestoneName, data.milestoneId]
+        );
+    }
+
+    static async updateTaskName(data) {
+        await db.query(`
+            UPDATE tasks
+            SET task_name = $1
+            WHERE id = $2`,
+            [data.taskName, data.taskId]
+        );
     }
 }
 
