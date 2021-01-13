@@ -9,24 +9,36 @@
     <section id="goal-roadmap">
         <ul>
             {% if activeGoal.milestones.length == 1 %}
+
                 <li class="goal-li">
                     <div class="milestone-bubble">
                         <div class="milestone">
-                            <p class="milestone-title text-light text-center">
+                            <p class="milestone-title text-light text-center {{'milestone-completed' if activeGoal.milestones[0].milestoneCompleted }}">
                                 {{ activeGoal.milestones[0].milestoneName or "Goal" }}
                             </p>
+                            {% if activeGoal.milestones[0].milestoneCompleted %}
+                            <i class="far fa-check-circle fa-3x"></i>
+                            <form action="/{{ username }}/{{ activeGoal.goalId }}/{{ activeGoal.milestones[0].milestoneId }}/incomplete" method="POST">
+                                <button class="goal-uncheck-button fa-2x"><i class="fas fa-times"></i></button>
+                            </form>
+                            {% else %}
+                            <form action="/{{ username }}/{{ activeGoal.goalId }}/{{ activeGoal.milestones[0].milestoneId }}/complete" method="POST">
+                                <button class="goal-check-button fa-2x"><i class="fas fa-check-double"></i></button>
+                            </form>
+                            {% endif %}
                             <ul class="task-list text-light">
                                 {% if activeGoal.milestones[0].tasks %}
                                     {% for task in activeGoal.milestones[0].tasks %}
-                                        <li>{{ task.taskName }}</li>
+                                        <li class="{{'milestone-completed' if activeGoal.milestones[0].milestoneCompleted }}">{{ task.taskName }}</li>
                                     {% endfor %}
                                 {% else %}
-                                    <li>You didn't add any tasks, just nail your milestone!</li>
+                                    <li class="{{'milestone-completed' if activeGoal.milestones[0].milestoneCompleted }}">You didn't add any tasks, just nail your milestone!</li>
                                 {% endif %}
                             </ul>
                             <div class="milestone-tags text-info">
-                                #Tag
+                                #tagPlaceholder
                             </div>
+                            <button class=" btn-edit"><i class="fas fa-edit fa-2x"></i></button>
                         </div>
                         <p class="milestone-timespent text-faded">
                             Time Spent: 5 days, 3 hours,
@@ -40,19 +52,30 @@
                     <div class="milestone-bubble">
                         <div class="{{'shape-line' if milestone.milestoneSequence > 1}}"></div>
                         <div class="milestone">
-                            <p class="milestone-title text-light text-center">{{ milestone.milestoneName }}</p>
+                            <p class="milestone-title text-light text-center {{'milestone-completed' if milestone.milestoneCompleted }}">{{ milestone.milestoneName }}</p>
+                            {% if milestone.milestoneCompleted %}
+                            <i class="far fa-check-circle fa-3x"></i>
+                            <form action="/{{ username }}/{{ activeGoal.goalId }}/{{ milestone.milestoneId }}/incomplete" method="POST">
+                                <button class="goal-uncheck-button fa-2x"><i class="fas fa-times"></i></button>
+                            </form>
+                            {% else %}
+                            <form action="/{{ username }}/{{ activeGoal.goalId }}/{{ milestone.milestoneId }}/complete" method="POST">
+                                <button class="goal-check-button fa-2x"><i class="fas fa-check-double"></i></button>
+                            </form>
+                            {% endif %}
                             <ul class="task-list text-light">
                                 {% if milestone.tasks %}
                                     {% for task in milestone.tasks %}
-                                        <li>{{ task.taskName }}</li>
+                                        <li class="{{'milestone-completed' if milestone.milestoneCompleted }}">{{ task.taskName }}</li>
                                     {% endfor %}
                                 {% else %}
-                                    <li>You didn't add any tasks, just nail your milestone!</li>
+                                    <li class="{{'milestone-completed' if milestone.milestoneCompleted }}">You didn't add any tasks, just nail your milestone!</li>
                                 {% endif %}
                             </ul>
                             <div class="milestone-tags text-info">
-                                #Tag
+                                #tagPlaceholder
                             </div>
+                            <button class=" btn-edit"><i class="fas fa-edit fa-2x"></i></button>
                         </div>
                         <p class="milestone-timespent text-faded">
                             Time Spent: 5 days, 3 hours,
@@ -63,5 +86,8 @@
                 {% endfor %}
             {% endif %}
         </ul>
+        {% if activeGoal.goalCompleted %}
+            <i class="fas fa-trophy fa-10x text-secondary"></i>
+        {% endif %}
     </section>
 {% endblock %}  

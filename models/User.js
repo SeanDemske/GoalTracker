@@ -136,7 +136,8 @@ class User {
                     completed AS milestone_completed,
                     goal_id
             FROM milestones
-            WHERE goal_id = $1`,
+            WHERE goal_id = $1
+            ORDER BY milestone_sequence`,
             [goalId]
         );
         const milestoneData = milestoneQuery.rows;
@@ -149,39 +150,32 @@ class User {
                     t.milestone_id
             FROM tasks AS t 
                 JOIN milestones AS m ON t.milestone_id = m.id
-            WHERE m.goal_id = $1`,
+            WHERE m.goal_id = $1
+            ORDER BY t.sequence`,
             [goalId]
         );
         const taskData = taskQuery.rows;
 
         return formatGoalObject(goalData, milestoneData, taskData);
     }
+
+    static async markMilestoneComplete(milestoneId) {
+        await db.query(`
+            UPDATE milestones
+            SET completed = true
+            WHERE id = $1`,
+            [milestoneId]
+        );
+    }
+
+    static async markMilestoneIncomplete(milestoneId) {
+        await db.query(`
+            UPDATE milestones
+            SET completed = false
+            WHERE id = $1`,
+            [milestoneId]
+        );
+    }
 }
-
-
-
-// 6
-// Returns:
-// [
-//     {
-//         goalId,
-//         goalName,
-//         goalUsername,
-//         milestones: [
-//             {
-//                 milestoneId,
-//                 milestoneName,
-//                 completed
-//             }
-//         ],
-//         tasks: [
-//             {
-//                 taskId,
-//                 taskName,
-//                 completed
-//             }
-//         ]
-//     }
-// ]
 
 module.exports = User;
