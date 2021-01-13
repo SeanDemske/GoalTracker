@@ -35,7 +35,7 @@
                                     <li class="{{'milestone-completed' if activeGoal.milestones[0].milestoneCompleted }}">You didn't add any tasks, just nail your milestone!</li>
                                 {% endif %}
                             </ul>
-                            <div class="milestone-tags text-info">
+                            <div class="milestone-tags text-info {{'milestone-completed' if milestone.milestoneCompleted }}">
                                 #tagPlaceholder
                             </div>
                             <button class=" btn-edit"><i class="fas fa-edit fa-2x"></i></button>
@@ -72,7 +72,7 @@
                                     <li class="{{'milestone-completed' if milestone.milestoneCompleted }}">You didn't add any tasks, just nail your milestone!</li>
                                 {% endif %}
                             </ul>
-                            <div class="milestone-tags text-info">
+                            <div class="milestone-tags text-info {{'milestone-completed' if milestone.milestoneCompleted }}">
                                 #tagPlaceholder
                             </div>
                             <button class=" btn-edit"><i class="fas fa-edit fa-2x"></i></button>
