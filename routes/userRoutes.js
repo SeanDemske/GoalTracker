@@ -67,4 +67,36 @@ router.post("/:goal_id/delete", function(req, res, next) {
     return res.redirect(`/${req.user.username}`);
 });
 
+router.post("/:goal_id/:milestone_id/complete", async function(req, res, next) {
+    // Not signed in
+    if (!req.user) {
+        return res.redirect(`/signup`);
+    }
+
+    // Unauthorized Access
+    if (req.username_param !== req.user.username) {
+        return res.redirect(`/${req.user.username}/${req.params.goal_id}`);
+    }
+
+    User.markMilestoneComplete(req.params.milestone_id);
+
+    return res.redirect(`/${req.user.username}/${req.params.goal_id}`);
+});
+
+router.post("/:goal_id/:milestone_id/incomplete", async function(req, res, next) {
+    // Not signed in
+    if (!req.user) {
+        return res.redirect(`/signup`);
+    }
+
+    // Unauthorized Access
+    if (req.username_param !== req.user.username) {
+        return res.redirect(`/${req.user.username}/${req.params.goal_id}`);
+    }
+
+    User.markMilestoneIncomplete(req.params.milestone_id);
+
+    return res.redirect(`/${req.user.username}/${req.params.goal_id}`);
+});
+
 module.exports = router;

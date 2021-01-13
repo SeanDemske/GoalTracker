@@ -96,6 +96,11 @@ i {
     align-items: center;
 }
 
+.milestone-completed {
+    text-decoration: line-through;
+    opacity: .5;
+}
+
 .fa-flag {
     margin-right: .5rem;
 }
@@ -198,6 +203,47 @@ button#add-milestone-button:focus {
     border: none;
     color: rgb(99, 35, 66);
     cursor: pointer;
+}
+
+.btn-edit {
+    background: none;
+    border: none;
+    color: white;
+    opacity: .75;
+    margin-left: 20px;
+}
+
+.btn-edit:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.goal-check-button,
+.goal-uncheck-button {
+    background: none;
+    border: none;
+    position: absolute;
+    right: 10px;
+    bottom: -15px;
+    color: #5d5d8b;
+    opacity: .5;
+    width: max-content;
+    height: max-content;
+}
+
+.goal-check-button:hover,
+.goal-uncheck-button:hover {
+    cursor: pointer;
+    color: #c18bee;
+}
+
+.far.fa-check-circle {
+    position: absolute;
+    right: -15px;
+    top: -45px;
+    color: var(--secondary-color);
+    width: max-content;
+    height: max-content;
 }
 
 /* Field Groups */
