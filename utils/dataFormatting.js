@@ -1,5 +1,4 @@
 
-
 // Formats raw sql data into a clean and easy to navigate javascript object
 function formatGoalObject(goalData, milestoneData, taskData) {
     const formattedObject = {
@@ -52,7 +51,37 @@ function formatGoalObject(goalData, milestoneData, taskData) {
     return formattedObject;
 }
 
-module.exports = formatGoalObject;
+function pullMilestoneData(updatedMilestone) {
+    const updatedObj = {}
+    for (const property in updatedMilestone) {
+        if (property.indexOf("milestone-") > -1) {
+            let id = property.split("-")[1];
+            updatedObj.milestoneId = id;
+            updatedObj.milestoneName = updatedMilestone[property]; 
+        }
+    }
+    return updatedObj
+}
+
+function pullTaskData(updatedMilestone) {
+    const formattedArr = []
+    for (const property in updatedMilestone) {
+        if (property.indexOf("task-") > -1) {
+            let id = property.split("-")[1];
+            formattedArr.push({
+                taskId: id,
+                taskName: updatedMilestone[property]
+            })
+        }
+    }
+    return formattedArr
+}
+
+module.exports = { 
+    formatGoalObject, 
+    pullMilestoneData,
+    pullTaskData
+}
 
 // Convert created date to time spent
 //

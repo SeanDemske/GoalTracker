@@ -1,5 +1,6 @@
 const Router = require("express").Router;
 const User = require("../models/User");
+const { pullMilestoneData, pullTaskData } = require("../utils/dataFormatting");
 
 const router = new Router();
 
@@ -102,5 +103,51 @@ router.post("/:goal_id/:milestone_id/incomplete", async function(req, res, next)
 
     return res.redirect(`/${req.user.username}/${req.params.goal_id}`);
 });
+
+router.get("/:goal_id/:milestone_id/edit", async function(req, res, next) {
+    // Not signed in
+    if (!req.user) {
+        return res.redirect(`/signup`);
+    }
+
+    // Unauthorized Access
+    if (req.username_param !== req.user.username) {
+        return res.redirect(`/${req.user.username}/${req.params.goal_id}`);
+    }
+
+    const goalData = await User.getGoal(req.params.goal_id); 
+    const milestoneData = goalData.milestones.filter(m => {
+        return (m.milestoneId == req.params.milestone_id);
+    });
+    milestoneData[0].username = goalData.goalOwner;
+    milestoneData[0].goalId = goalData.goalId
+
+    return res.render("milestone_edit.html", milestoneData[0]);
+});
+
+router.post("/:goal_id/:milestone_id/update", async function(req, res, next) {
+    // Not signed in
+    if (!req.user) {
+        return res.redirect(`/signup`);
+    }
+
+    // Unauthorized Access
+    if (req.username_param !== req.user.username) {
+        return res.redirect(`/${req.user.username}/${req.params.goal_id}`);
+    }
+
+    const milestoneObj = pullMilestoneData(req.body);
+    const taskArr = pullTaskData(req.body);
+
+    console.log(taskArr);
+
+    User.updateMilestoneName(milestoneObj);
+    for (const task of taskArr) {
+        User.updateTaskName(task);
+    }
+
+    return res.redirect(`/${req.user.username}/${req.params.goal_id}`);
+});
+
 
 module.exports = router;

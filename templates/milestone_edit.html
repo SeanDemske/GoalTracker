@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section id="milestone-edit-page">
+        <div class="container">
+
+            <h1 class="text-underline">Edit</h1>
+            <form action="/{{ username }}/{{ goalId }}/{{ milestoneId }}/update" method="POST">
+
+                <div class="field-group">
+                    <label for="milestone-{{ milestoneId }}">Milestone:</label>
+                    <input type="text" name="milestone-{{ milestoneId }}" value="{{ milestoneName }}">
+                </div>
+
+                <br>
+
+                {% for task in tasks %}
+                <div class="field-group">
+                    <label for="task-{{ task.taskId }}">Task {{ task.taskSequence }}:</label>
+                    <input type="text" name="task-{{ task.taskId }}" value="{{ task.taskName }}">
+                </div>
+                {% endfor %}
+
+                <div class="button-group">
+                    <input class="btn btn-primary" type="submit" value="Edit">
+                    <a href="/" class="btn btn-outline"><span>Cancel</span></a>
+                </div>
+
+            </form>
+
+        </div>
+    </section>
+{% endblock %}

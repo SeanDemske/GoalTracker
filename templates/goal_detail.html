@@ -38,7 +38,9 @@
                             <div class="milestone-tags text-info {{'milestone-completed' if milestone.milestoneCompleted }}">
                                 #tagPlaceholder
                             </div>
-                            <button class=" btn-edit"><i class="fas fa-edit fa-2x"></i></button>
+                            <form action="/{{ username }}/{{ activeGoal.goalId }}/{{ activeGoal.milestones[0].milestoneId }}/edit">
+                                <button class="btn-edit"><i class="fas fa-edit fa-2x"></i></button>
+                            </form>
                         </div>
                         <p class="milestone-timespent text-faded">
                             Time Spent: 5 days, 3 hours,
@@ -75,7 +77,9 @@
                             <div class="milestone-tags text-info {{'milestone-completed' if milestone.milestoneCompleted }}">
                                 #tagPlaceholder
                             </div>
-                            <button class=" btn-edit"><i class="fas fa-edit fa-2x"></i></button>
+                            <form action="/{{ username }}/{{ activeGoal.goalId }}/{{ milestone.milestoneId }}/edit">
+                                <button class="btn-edit"><i class="fas fa-edit fa-2x"></i></button>
+                            </form>
                         </div>
                         <p class="milestone-timespent text-faded">
                             Time Spent: 5 days, 3 hours,

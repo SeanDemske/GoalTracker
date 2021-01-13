@@ -145,4 +145,40 @@ span .nav-username,
     filter: brightness(110%);
 }
 
+/* Edit Milestone Page */
+#milestone-edit-page {
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    padding: 0;
+}
+
+#milestone-edit-page {
+    padding: 2rem 0;
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+#milestone-edit-page form {
+    width: 80%;
+}
+
+#milestone-edit-page .container {
+    background-color: var(--light-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
 
