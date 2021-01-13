@@ -79,6 +79,8 @@ router.post("/:goal_id/:milestone_id/complete", async function(req, res, next) {
     }
 
     User.markMilestoneComplete(req.params.milestone_id);
+    const goalData = await User.getGoal(req.params.goal_id); 
+    User.updateGoalStatus(goalData);
 
     return res.redirect(`/${req.user.username}/${req.params.goal_id}`);
 });
@@ -95,6 +97,8 @@ router.post("/:goal_id/:milestone_id/incomplete", async function(req, res, next)
     }
 
     User.markMilestoneIncomplete(req.params.milestone_id);
+    const goalData = await User.getGoal(req.params.goal_id); 
+    User.updateGoalStatus(goalData);
 
     return res.redirect(`/${req.user.username}/${req.params.goal_id}`);
 });

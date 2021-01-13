@@ -94,11 +94,16 @@ i {
     text-overflow: ellipsis;
     display: flex;
     align-items: center;
+    padding-right: 50px;
 }
 
 .milestone-completed {
     text-decoration: line-through;
     opacity: .5;
+}
+
+.goal-completed {
+    background: #5eb83b;
 }
 
 .fa-flag {

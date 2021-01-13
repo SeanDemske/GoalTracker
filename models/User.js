@@ -176,6 +176,26 @@ class User {
             [milestoneId]
         );
     }
+
+    static async updateGoalStatus(goal) {
+        if (goal.milestones.every(m => {
+            return m.milestoneCompleted === true
+        })) {
+            await db.query(`
+                UPDATE goals
+                SET completed = true
+                WHERE id = $1`,
+                [goal.goalId]
+            );
+        } else {
+            await db.query(`
+                UPDATE goals
+                SET completed = false
+                WHERE id = $1`,
+                [goal.goalId]
+            );
+        }
+    }
 }
 
 module.exports = User;
