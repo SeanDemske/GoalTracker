@@ -311,3 +311,14 @@ button#add-milestone-button:focus {
     width: 250px;
     height: 75px;
 }
+
+.searchbar {
+    background-color: #3e3c57;
+    border-radius: 25px;
+    border: 2px solid #726494;
+    height: 40px;
+    width: 700px;
+    font-size: 1.5rem;
+    padding: 1rem;
+    color: #fff;
+}
