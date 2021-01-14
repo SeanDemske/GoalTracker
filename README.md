@@ -17,7 +17,6 @@ This app was the result of a hackathon event hosted by [Mintbean](https://www.mi
 * [Postgres](https://www.postgresql.org/)
 * [Bcrypt](https://www.npmjs.com/package/bcrypt)
 * [Font Awesome](https://fontawesome.com/)
-* [Edamam Recipe API](https://developer.edamam.com/edamam-docs-recipe-api )
 
 
 ## Setting up the developer environment on Windows:
