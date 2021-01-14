@@ -8,7 +8,7 @@ THE goal tracking app. <a href="https://lets-goal.herokuapp.com/">View Live</a>
 
 ## Description
 
-This app was the result of a hackathon event hosted by [Mintbean](https://www.mintbean.io/) where the aim was to create a simple goal tracking application. Create your own profile and hold yourself accountable with LetsGoal. 
+This app was the result of a hackathon event hosted by [Mintbean](https://www.mintbean.io/) where the aim was to create a simple goal tracking application. Create your own profile and hold yourself accountable with LetsGoal!
 
 ## Built With
 * NodeJS
