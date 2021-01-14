@@ -14,6 +14,7 @@ router.get("/", function(req, res, next) {
     if (req.user) {
         return res.redirect(`/${req.user.username}`);
     }
+
     return res.render("index.html");
 });
 

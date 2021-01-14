@@ -2,7 +2,8 @@ const db = require("../db");
 const ExpressError = require("../expressError");
 const bcrypt = require("bcrypt");
 const { BCRYPT_WORK_FACTOR } = require("../config");
-const { formatGoalObject}  = require("../utils/dataFormatting")
+const { formatGoalObject}  = require("../utils/dataFormatting");
+const { static } = require("express");
 
 class User {
 
@@ -132,6 +133,7 @@ class User {
         const milestoneQuery = await db.query(`
             SELECT  milestone_name,
                     id AS milestone_id,
+                    created_at AS milestone_created_at,
                     sequence AS milestone_sequence,
                     completed AS milestone_completed,
                     goal_id
@@ -214,6 +216,55 @@ class User {
             [data.taskName, data.taskId]
         );
     }
+    
+    static async timeSpent(goalId){
+        const result = await db.query(`
+            SELECT created_at
+            FROM goals
+            WHERE id = $1
+            `,
+            [goalId]
+        )
+        const datetime = new Date();
+        const startDate = result.rows[0];
+
+        const timeSpent = datetime - startDate.created_at;
+        const days = Math.floor(timeSpent/(1000 * 60 * 60 * 24));
+        const seconds = Math.floor((timeSpent / 1000) % 60);
+        const minutes = Math.floor((timeSpent / (1000 * 60)) % 60);
+        const hours = Math.floor((timeSpent / (1000 * 60 * 60)) % 24);
+        return {
+            days,
+            hours,
+            minutes,
+            seconds
+        }
+    }
+
+    static async timeSpentMile(milestoneId){
+        const result = await db.query(`
+            SELECT created_at
+            FROM milestones
+            WHERE id = $1
+            `,
+            [milestoneId]
+        )
+        const datetime = new Date();
+        const startDate = result.rows[0];
+        const timeSpent = datetime - startDate.created_at;
+        const days = Math.floor(timeSpent/(1000 * 60 * 60 * 24));
+        const seconds = Math.floor((timeSpent / 1000) % 60);
+        const minutes = Math.floor((timeSpent / (1000 * 60)) % 60);
+        const hours = Math.floor((timeSpent / (1000 * 60 * 60)) % 24);
+        return {
+            days,
+            hours,
+            minutes,
+            seconds
+        }
+    }
 }
+
+    
 
 module.exports = User;

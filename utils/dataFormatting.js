@@ -1,4 +1,5 @@
 
+
 // Formats raw sql data into a clean and easy to navigate javascript object
 function formatGoalObject(goalData, milestoneData, taskData) {
     const formattedObject = {
@@ -16,6 +17,7 @@ function formatGoalObject(goalData, milestoneData, taskData) {
                 milestoneId: milestone.milestone_id,
                 milestoneName: milestone.milestone_name,
                 milestoneSequence: milestone.milestone_sequence,
+                mileStoneCreatedAt: milestone.milestone_created_at,
                 milestoneCompleted: milestone.milestone_completed
             });
         } else {
@@ -23,6 +25,7 @@ function formatGoalObject(goalData, milestoneData, taskData) {
                 milestoneId: milestone.milestone_id,
                 milestoneName: milestone.milestone_name,
                 milestoneSequence: milestone.milestone_sequence,
+                mileStoneCreatedAt: milestone.milestone_created_at,
                 milestoneCompleted: milestone.milestone_completed
             }]
         }
@@ -77,10 +80,11 @@ function pullTaskData(updatedMilestone) {
     return formattedArr
 }
 
+
 module.exports = { 
     formatGoalObject, 
     pullMilestoneData,
-    pullTaskData
+    pullTaskData,
 }
 
 // Convert created date to time spent

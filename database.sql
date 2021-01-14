@@ -28,6 +28,7 @@ CREATE TABLE milestones
     id SERIAL PRIMARY KEY,
     goal_id integer REFERENCES goals ON DELETE CASCADE,
     sequence integer,
+    created_at timestamp without time zone default CURRENT_TIMESTAMP,
     completed boolean default FALSE,
     tags text,
     milestone_name text NOT NULL

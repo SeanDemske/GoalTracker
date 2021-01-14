@@ -17,6 +17,13 @@ router.get("/", async function(req, res, next) {
 
     req.user.userGoals = await User.getGoals(req.user.username);
 
+    for(const goal of req.user.userGoals) {
+        goal["totalTime"] = await User.timeSpent(goal.id);
+    }
+
+
+    // await User.timeSpent(req.params.goal_id);
+
     return res.render("user_dash.html", req.user);
 });
 
@@ -32,6 +39,10 @@ router.get("/:goal_id", async function(req, res, next) {
     }
 
     req.user.activeGoal = await User.getGoal(req.params.goal_id);
+
+    for(const milestone of req.user.activeGoal.milestones) {
+        milestone["totalTime"] = await User.timeSpentMile(milestone.milestoneId);
+    }
 
     return res.render("goal_detail.html", req.user);
 });
