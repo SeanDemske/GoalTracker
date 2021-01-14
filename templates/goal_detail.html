@@ -3,10 +3,11 @@
     <header id="goal-header">
         <a href="/{{ username }}" class="btn-return-arrow"><i class="fas fa-arrow-left fa-2x"></i></a>
         <span class="text-light truncate"><i class="fas fa-flag fa-1x  text-secondary"></i> {{ activeGoal.goalName }}</span>
-        <button class="btn-return-arrow"><i class="fas fa-search fa-3x"></i></button>
+        <button class="btn-return-arrow search-btn"><i class="fas fa-search fa-3x"></i></button>
     </header>
     
     <section id="goal-roadmap">
+        <input type="text" class="searchbar" placeholder="Feature unavailable due to time constraints :(" hidden>
         <ul>
             {% if activeGoal.milestones.length == 1 %}
 
@@ -92,4 +93,5 @@
             <i class="fas fa-trophy fa-10x text-secondary"></i>
         {% endif %}
     </section>
+    <script src="/static/js/searchbarToggle.js"></script>
 {% endblock %}  

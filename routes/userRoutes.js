@@ -150,8 +150,6 @@ router.post("/:goal_id/:milestone_id/update", async function(req, res, next) {
     const milestoneObj = pullMilestoneData(req.body);
     const taskArr = pullTaskData(req.body);
 
-    console.log(taskArr);
-
     User.updateMilestoneName(milestoneObj);
     for (const task of taskArr) {
         User.updateTaskName(task);
