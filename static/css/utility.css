@@ -322,3 +322,9 @@ button#add-milestone-button:focus {
     padding: 1rem;
     color: #fff;
 }
+
+@media screen and (max-width: 770px) {
+    .searchbar{
+        width: 80%;
+    }
+}
