@@ -1,5 +1,5 @@
 ## Goal Tracking Application  
-THE goal tracking app. <a href="https://lets-goal.herokuapp.com/">View Live</a>
+THE goal tracking app
 
 ![LetsGoal Website](https://i.imgur.com/DtM6UtG.png)
 
